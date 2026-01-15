@@ -1,0 +1,17 @@
+#test-static {
+
+    width: 100px;
+    height: 100px;
+
+    background-color: red;
+
+}
+
+.test-dynamic {
+
+    width: 100px;
+    height: 100px;
+
+    background-color: blueviolet;
+
+}
