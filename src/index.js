@@ -1,8 +1,9 @@
+// Load css for the project
 import "./styles.css";
 
-// Test code for checking node/webpack setup works for a simple case
-const contentArea = document.getElementById("#content");
+// Set up the permanent navigation section in template.html
+import "./navigation/NavHeaderSetup.js"
 
-const testText = document.createElement("p");
-testText.className = "test-dynamic";
-contentArea.appendChild(testText);
+// Use the page loader to load the projects page on start-up
+import PageLoader from "./pages/PageLoader.js";
+PageLoader("projects");
