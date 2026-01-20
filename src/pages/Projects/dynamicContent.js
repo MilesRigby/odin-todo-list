@@ -1,11 +1,14 @@
+import PageDataTransferHandler from "../../data/PageDataTransferHandler";
+import PageLoader from "../PageLoader";
+
 // Builds the list of projects using their data for the projects page
 const BuildProjectsList = (projectsData) => {
 
     const projectsList = document.createElement("div");
     projectsList.id = "projects-list";
 
-    for (let i=0; i<projectsData.length; i++) {
-        projectsList.appendChild(BuildProjectCard(projectsData[i]));
+    for (const [id, data] of Object.entries(projectsData)) {
+        projectsList.appendChild(BuildProjectCard(id, data));
     }
 
     return projectsList;
@@ -13,10 +16,15 @@ const BuildProjectsList = (projectsData) => {
 }
 
 // Builds a card for a single project's data
-const BuildProjectCard = (data) => {
+const BuildProjectCard = (id, data) => {
 
     const card = document.createElement("div");
     card.className = "project-card";
+
+    card.addEventListener("click", () => { 
+        PageDataTransferHandler.todo.Store(id);
+        PageLoader("todo");
+    });
 
     const main = document.createElement("div");
     main.className = "project-main-info";
