@@ -1,13 +1,19 @@
+import BuildProjectsList from "./dynamicContent";
+import GetProjectData from "./data";
+
+// Builds the main containers for projects page, calling on functions to produce the changeable content
 const BuildProjectsPage = () => {
 
     // page content wrapper
     const pageContent = document.createElement("div");
-    pageContent.className = "projects-page";
+    pageContent.id = "project-page-content-wrapper";
 
-    // test content
-    const testText = document.createElement("p");
-    pageContent.appendChild(testText);
-    testText.innerText = "Projects page test";
+    const pageHeader = document.createElement("p");
+    pageHeader.className = "list-header";
+    pageHeader.innerText = "Your Projects";
+    pageContent.appendChild(pageHeader);
+
+    pageContent.appendChild(BuildProjectsList(GetProjectData()));
 
     // return page
     return pageContent;
