@@ -1,3 +1,10 @@
+/*
+
+Constructs all content for the main projects page
+This is the only file in its folder that should be accessed from outside it.
+
+*/
+
 import BuildProjectsList from "./dynamicContent";
 import { GetProjectData } from "./data";
 
@@ -13,6 +20,7 @@ const BuildProjectsPage = () => {
     pageHeader.innerText = "Your Projects";
     pageContent.appendChild(pageHeader);
 
+    // Builds the list of project cards from the stored data
     pageContent.appendChild(BuildProjectsList(GetProjectData()));
 
     // return page

@@ -1,3 +1,11 @@
+/*
+
+Builds the dynamic content (the list of projects) for the main projects page
+
+*/
+
+
+// Interfaces with sibling file data.js to retrieve data for loading the page 
 import { OpenTodoPage } from './data';
 
 // Builds the list of projects using their data for the projects page
@@ -6,6 +14,7 @@ const BuildProjectsList = (projectsData) => {
     const projectsList = document.createElement("div");
     projectsList.id = "projects-list";
 
+    // Create a card on the page displaying the information for each project
     for (const [id, data] of Object.entries(projectsData)) {
         projectsList.appendChild(BuildProjectCard(id, data));
     }
@@ -20,6 +29,7 @@ const BuildProjectCard = (id, data) => {
     const card = document.createElement("div");
     card.className = "project-card";
 
+    // Project card will open its todo list when clicked
     card.addEventListener("click", () => { 
         OpenTodoPage(id);
     });

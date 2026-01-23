@@ -1,3 +1,10 @@
+/*
+
+Handles switching between the pages of the site.
+Any code that wants to change the page needs to import the PageLoader function
+
+*/
+
 // import pages
 import BuildProjectsPage from "./Projects/page.js";
 import BuildTodoPage from "./Todo/page.js";
@@ -27,4 +34,5 @@ const PageLoader = (pageName) => {
 
 }
 
+// Must be used to change pages
 export default PageLoader;

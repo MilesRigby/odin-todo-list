@@ -1,9 +1,17 @@
+/*
+
+Constructs all content for the todo list pages.
+This is the only file in its folder that should be accessed from outside it.
+
+*/
+
 import BuildTodoList from "./dynamicContent";
 import { GetTodoData } from "./data";
 
 // Call on functions to produce the main content for a todo list, including title and "add" button
 const BuildTodoPage = () => {
 
+    // Loads in data for the project tasks
     const todoData = GetTodoData();
 
     const pageContent = document.createElement("div");
@@ -14,6 +22,7 @@ const BuildTodoPage = () => {
     todoHeader.innerText = todoData.name;
     pageContent.appendChild(todoHeader);
 
+    // Constructs the list of tasks for the project
     pageContent.appendChild(BuildTodoList(todoData.todoItems));
 
     const addTodoItemButton = document.createElement("button");
