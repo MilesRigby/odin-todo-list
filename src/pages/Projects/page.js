@@ -1,5 +1,5 @@
 import BuildProjectsList from "./dynamicContent";
-import GetProjectData from "./data";
+import { GetProjectData } from "./data";
 
 // Builds the main containers for projects page, calling on functions to produce the changeable content
 const BuildProjectsPage = () => {

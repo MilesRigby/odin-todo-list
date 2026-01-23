@@ -1,5 +1,4 @@
-import PageDataTransferHandler from "../../data/PageDataTransferHandler";
-import PageLoader from "../PageLoader";
+import { OpenTodoPage } from './data';
 
 // Builds the list of projects using their data for the projects page
 const BuildProjectsList = (projectsData) => {
@@ -22,8 +21,7 @@ const BuildProjectCard = (id, data) => {
     card.className = "project-card";
 
     card.addEventListener("click", () => { 
-        PageDataTransferHandler.todo.Store(id);
-        PageLoader("todo");
+        OpenTodoPage(id);
     });
 
     const main = document.createElement("div");

@@ -1,4 +1,4 @@
-import PageDataTransferHandler from "../../data/PageDataTransferHandler";
+import { StoreTodoId } from './data.js';
 
 const BuildTodoList = (todoItems) => {
 
@@ -19,7 +19,7 @@ const BuildTodoItem = (id, data) => {
     item.className = "todo-item";
 
     item.addEventListener("click", () => {
-        PageDataTransferHandler.detailed.Store(id);
+        StoreTodoId(id);
         //PageLoader("detailed");
     });
 

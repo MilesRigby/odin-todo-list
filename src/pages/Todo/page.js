@@ -1,5 +1,5 @@
 import BuildTodoList from "./dynamicContent";
-import GetTodoData from "./data";
+import { GetTodoData } from "./data";
 
 // Call on functions to produce the main content for a todo list, including title and "add" button
 const BuildTodoPage = () => {
