@@ -1,143 +1,114 @@
+/*
+
+Stores the data for projects and todo list items, and provides access methods.
+Entries are stored with unique IDs.
+
+*/
+
 import { GetEarlierDate } from "../utils/date";
 
-const data = {
+// The permanent data for the site, containing project names todo lists for each project
+// Each project and todo task has a unique ID that refers to it
+const projectData = {
 
-    projectInfo: {
-
-        39847539845:    {
-                name: "Project #1",
-                itemCount: 4,
-                earliestDueDate: "17-02-2025"
-        },
-
-        29384758663:    {
-                name: "Project #2",
-                itemCount: 7,
-                earliestDueDate: "21-02-2025"
-        },
-
-        30948530945:    {
-                name: "Project #3",
-                itemCount: 2,
-                earliestDueDate: "01-03-2025"
-        },
-
+    39847539845: {
+        name: "Project #1",
+        todoItems: {
+            39847549878: {
+                name: "Task #1",
+                dueDate: "17-08-2025",
+                complete: false,
+            },
+            89847549878: {
+                name: "Task #2",
+                dueDate: "21-06-2027",
+                complete: true,
+            },
+            79847549878: {
+                name: "Task #4",
+                dueDate: "20-08-2028",
+                complete: false,
+            },
+            69847549878: {
+                name: "Task #3",
+                dueDate: "15-09-2026",
+                complete: false,
+            }
+        }
     },
 
-    projectTodos: {
-
-        39847539845: {
-            name: "Project #1",
-            todoItems: {
-                39847549878: {
-                    name: "Task #1",
-                    dueDate: "17-08-2025",
-                    complete: false,
-                },
-                89847549878: {
-                    name: "Task #2",
-                    dueDate: "21-06-2027",
-                    complete: true,
-                },
-                79847549878: {
-                    name: "Task #4",
-                    dueDate: "20-08-2028",
-                    complete: false,
-                },
-                69847549878: {
-                    name: "Task #3",
-                    dueDate: "15-09-2026",
-                    complete: false,
-                }
+    29384758663: {
+        name: "Project #2",
+        todoItems: {
+            59847549878: {
+                name: "Task #2",
+                dueDate: "10-02-2025",
+                complete: true,
+            },
+            49847549878: {
+                name: "Task #3",
+                dueDate: "30-04-2025",
+                complete: false,
+            },
+            39847549878: {
+                name: "Task #1",
+                dueDate: "19-05-2025",
+                complete: false,
+            },
+            29847549878: {
+                name: "Task #4",
+                dueDate: "21-03-2025",
+                complete: true,
             }
-        },
+        }
+    },
 
-        29384758663: {
-            name: "Project #2",
-            todoItems: {
-                59847549878: {
-                    name: "Task #2",
-                    dueDate: "10-02-2025",
-                    complete: true,
-                },
-                49847549878: {
-                    name: "Task #3",
-                    dueDate: "30-04-2025",
-                    complete: false,
-                },
-                39847549878: {
-                    name: "Task #1",
-                    dueDate: "19-05-2025",
-                    complete: false,
-                },
-                29847549878: {
-                    name: "Task #4",
-                    dueDate: "21-03-2025",
-                    complete: true,
-                }
+    30948530945: {
+        name: "Project #3",
+        todoItems: {
+            19847549878: {
+                name: "Task #1",
+                dueDate: "15-02-2025",
+                complete: false,
+            },
+            38847549878: {
+                name: "Task #4",
+                dueDate: "19-02-2025",
+                complete: true,
+            },
+            37847549878: {
+                name: "Task #2",
+                dueDate: "21-02-2025",
+                complete: true,
+            },
+            36847549878: {
+                name: "Task #3",
+                dueDate: "20-02-2025",
+                complete: true,
             }
-        },
-
-        30948530945: {
-            name: "Project #3",
-            todoItems: {
-                19847549878: {
-                    name: "Task #1",
-                    dueDate: "15-02-2025",
-                    complete: false,
-                },
-                38847549878: {
-                    name: "Task #4",
-                    dueDate: "19-02-2025",
-                    complete: true,
-                },
-                37847549878: {
-                    name: "Task #2",
-                    dueDate: "21-02-2025",
-                    complete: true,
-                },
-                36847549878: {
-                    name: "Task #3",
-                    dueDate: "20-02-2025",
-                    complete: true,
-                }
-            }
-        },
-
-    }
+        }
+    },
 
 }
 
 // UNTESTED
+// Creates a new empty project entry with a name, generating a unique ID for it
 const CreateNewProject = (name) => {
     const uniqueProjectId = crypto.randomUUID();
 
-    data.projectInfo[uniqueProjectId] = {
-        name: name,
-        itemCount: 0,
-        earliestDueDate: null
-    }
-
-    data.projectTodos[uniqueProjectId] = {
+    projectData[uniqueProjectId] = {
         name: name,
         todoItems: {}
     }
 }
 
 // UNTESTED
+// Creates a new todo list task in a specified project. Requires a name and due date.
+// Initialises task as incomplete
 const CreateNewTodo = (projectId, name, dueDate) => {
     const uniqueTodoId = crypto.randomUUID();
 
-    const projectInfo = data.projectInfo[projectId];
-    projectInfo.itemCount++;
-
-    if (projectInfo.earliestDueDate == null) {
-        projectInfo.earliestDueDate = newDate;
-    } else {
-        projectInfo.earliestDueDate = GetEarlierDate(projectInfo.earliestDueDate, dueDate)
-    }
-
-    data.projectTodos[projectId].todoItems[uniqueTodoId] = {
+    projectData[projectId].todoItems[uniqueTodoId] = {
         name: name,
         dueDate: dueDate,
         complete: false
@@ -145,14 +116,48 @@ const CreateNewTodo = (projectId, name, dueDate) => {
 
 }
 
+// Returns the data needed for the projects page - name, number of todo tasks, 
+// and the date of the earliest due incomplete task for each project
 const GetProjectData = () => {
-    return data.projectInfo;
+    const projectPageData = {}
+
+    for (const [projectId, data] of Object.entries(projectData)) {
+
+        projectPageData[projectId] = {
+            name: data.name,
+            itemCount: Object.keys(data.todoItems).length,
+            earliestDueDate: CalculateEarliestDueDate(data.todoItems)
+        }
+
+    }
+
+    return projectPageData;
 }
 
+// Determines the todo task with the earliest due date given a project's todo list
+const CalculateEarliestDueDate = (todoItems) => {
+
+    let date = null;
+
+    for (const [id, data] of Object.entries(todoItems)) {
+        if (!data.complete) { // Ignore completed tasks
+            date = !date ? data.dueDate : GetEarlierDate(date, data.dueDate);
+        }
+    }
+
+    return date;
+
+}
+
+// Gets information for the todo list page - project name, and todo 
 const GetTodoData = (id) => {
-    return data.projectTodos[id];
+    return {
+        name: projectData[id].name,
+        todoItems: projectData[id].todoItems
+    }
 }
 
+// The object to export, allowing access to the data
 const DataAccess = {
     CreateNewProject: CreateNewProject,
     CreateNewTodo: CreateNewTodo,

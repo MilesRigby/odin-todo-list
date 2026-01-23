@@ -36,7 +36,7 @@ const BuildProjectCard = (id, data) => {
     const itemCount = document.createElement("p");
     itemCount.className = "project-todo-count";
     itemCount.innerText = "Items: " + data.itemCount.toString();
-    main.appendChild(projectName);
+    main.appendChild(itemCount);
 
     const nextStepDate = document.createElement("p");
     nextStepDate.className = "project-earliest-date";
