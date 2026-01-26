@@ -18,21 +18,25 @@ const projectData = {
                 name: "Task #1",
                 dueDate: "17-08-2025",
                 complete: false,
+                priority: "low",
             },
             89847549878: {
                 name: "Task #2",
                 dueDate: "21-06-2027",
                 complete: true,
+                priority: "medium",
             },
             79847549878: {
                 name: "Task #4",
                 dueDate: "20-08-2028",
                 complete: false,
+                priority: "high",
             },
             69847549878: {
                 name: "Task #3",
                 dueDate: "15-09-2026",
                 complete: false,
+                priority: "low",
             }
         }
     },
@@ -44,21 +48,25 @@ const projectData = {
                 name: "Task #2",
                 dueDate: "10-02-2025",
                 complete: true,
+                priority: "high",
             },
             49847549878: {
                 name: "Task #3",
                 dueDate: "30-04-2025",
                 complete: false,
+                priority: "low",
             },
             39847549878: {
                 name: "Task #1",
                 dueDate: "19-05-2025",
                 complete: false,
+                priority: "medium",
             },
             29847549878: {
                 name: "Task #4",
                 dueDate: "21-03-2025",
                 complete: true,
+                priority: "high",
             }
         }
     },
@@ -70,21 +78,25 @@ const projectData = {
                 name: "Task #1",
                 dueDate: "15-02-2025",
                 complete: false,
+                priority: "medium",
             },
             38847549878: {
                 name: "Task #4",
                 dueDate: "19-02-2025",
                 complete: true,
+                priority: "high",
             },
             37847549878: {
                 name: "Task #2",
                 dueDate: "21-02-2025",
                 complete: true,
+                priority: "medium",
             },
             36847549878: {
                 name: "Task #3",
                 dueDate: "20-02-2025",
                 complete: true,
+                priority: "low",
             }
         }
     },
@@ -105,13 +117,14 @@ const CreateNewProject = (name) => {
 // UNTESTED
 // Creates a new todo list task in a specified project. Requires a name and due date.
 // Initialises task as incomplete
-const CreateNewTodo = (projectId, name, dueDate) => {
+const CreateNewTodo = (projectId, name, dueDate, priority) => {
     const uniqueTodoId = crypto.randomUUID();
 
     projectData[projectId].todoItems[uniqueTodoId] = {
         name: name,
         dueDate: dueDate,
-        complete: false
+        complete: false,
+        priority: priority,
     }
 
 }
@@ -139,7 +152,7 @@ const CalculateEarliestDueDate = (todoItems) => {
 
     let date = null;
 
-    for (const [id, data] of Object.entries(todoItems)) {
+    for (const data of Object.values(todoItems)) {
         if (!data.complete) { // Ignore completed tasks
             date = !date ? data.dueDate : GetEarlierDate(date, data.dueDate);
         }

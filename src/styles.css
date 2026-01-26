@@ -174,13 +174,15 @@ Styling for the todo list pages.
 
 .todo-item {
 
+  --colour: 255 255 255;
+
   padding: 0.5rem;
   padding-left: 2rem;
 
   border-bottom-style: solid;
   border-width: 1px;
 
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(var(--colour));
 
   display: flex;
   flex-direction: row;
@@ -198,8 +200,16 @@ Styling for the todo list pages.
   border-bottom: none;
 }
 
-.todo-item:nth-child(2n) {
-  background-color: rgb(231, 231, 231);
+.todo-item[priority="low"] { 
+  --colour: 240 255 240;
+}
+
+.todo-item[priority="medium"] { 
+  --colour: 240 240 255;
+}
+
+.todo-item[priority="high"] { 
+  --colour: 255 240 240;
 }
 
 .todo-main-info {

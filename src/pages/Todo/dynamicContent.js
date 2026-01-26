@@ -17,6 +17,7 @@ const BuildTodoItem = (id, data) => {
 
     const item = document.createElement("div");
     item.className = "todo-item";
+    item.setAttribute("priority", data.priority);
 
     item.addEventListener("click", () => {
         StoreTodoId(id);
