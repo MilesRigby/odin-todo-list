@@ -103,7 +103,6 @@ const projectData = {
 
 }
 
-// UNTESTED
 // Creates a new empty project entry with a name, generating a unique ID for it
 const CreateNewProject = (name) => {
     const uniqueProjectId = crypto.randomUUID();
@@ -114,7 +113,6 @@ const CreateNewProject = (name) => {
     }
 }
 
-// UNTESTED
 // Creates a new todo list task in a specified project. Requires a name and due date.
 // Initialises task as incomplete
 const CreateNewTodo = (projectId, name, dueDate, priority) => {
@@ -170,12 +168,28 @@ const GetTodoData = (id) => {
     }
 }
 
+// Allows flexible modification of todo task data
+const UpdateTaskData = (projectId, id, modifications = {}) => {
+    
+    // Get the task to be modified
+    const taskItem = projectData[projectId].todoItems[id];
+
+    // Ensure only properties that already exist are modified
+    for (const [key, value] of Object.entries(modifications)) {
+        if (key in taskItem) {  
+            taskItem[key] = value;
+        }
+    }
+
+}
+
 // The object to export, allowing access to the data
 const DataAccess = {
     CreateNewProject: CreateNewProject,
     CreateNewTodo: CreateNewTodo,
     GetProjectData: GetProjectData,
-    GetTodoData: GetTodoData
+    GetTodoData: GetTodoData,
+    UpdateTaskData: UpdateTaskData
 }
 
 export default DataAccess;

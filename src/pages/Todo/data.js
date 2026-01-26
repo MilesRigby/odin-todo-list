@@ -18,5 +18,10 @@ const StoreTodoId = (id) => {
     PageDataTransferHandler.details.Store(id);
 }
 
+// Changes the completion state of a task in the project data
+const ToggleTaskCompletion = (id, newState) => {
+    DataAccess.UpdateTaskData(PageDataTransferHandler.todo.Retrieve().projectId, id, {complete: newState})
+}
+
 // Exports to be used by the page's other files - not to be called from outside data.js' parent folder
-export { GetTodoData, StoreTodoId };
+export { GetTodoData, StoreTodoId, ToggleTaskCompletion };
