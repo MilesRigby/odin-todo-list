@@ -250,3 +250,88 @@ Styling for the todo list pages.
   font-size: 2rem;
 
 }
+
+/*
+
+Styling for the details page.
+
+*/
+
+#details-content-wrapper {
+  
+  width: 70vw;
+
+  display: grid;
+  grid-template-columns: 30% 50% 20%;
+  grid-template-rows: 20% auto 20%;
+
+  font-size: 1.5rem;
+
+  align-items: center;
+
+}
+
+.det-name {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+
+  font-size: 2rem;
+}
+
+.det-priority {
+
+  grid-row: 1 / 2;
+  grid-column: 3 / 4;
+
+  justify-self: center;
+
+}
+
+.det-description {
+
+  padding-right: 2rem;
+  padding-left: 0.5rem;
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+
+  border-style: solid;
+  border-width: 2px;
+  border-left: none;
+  border-right: none;
+
+  grid-row: 2 / 3;
+  grid-column: 1 / 4;
+
+  font-size: 1.2rem;
+
+}
+
+.det-due-date {
+
+  grid-row: 3 / 4;
+  grid-column: 1 / 2;
+
+}
+
+.det-complete {
+
+  grid-row: 3 / 4;
+  grid-column: 3 / 4;
+
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-around;
+
+}
+
+.det-complete > input {
+
+  height: 2rem;
+  width: 2rem;
+
+  border-radius: 50%;
+
+  align-self: center;
+
+}
