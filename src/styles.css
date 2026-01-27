@@ -335,3 +335,91 @@ Styling for the details page.
   align-self: center;
 
 }
+
+/* 
+
+Styles for the modal for creating new projects
+
+*/
+
+#modal-background {
+
+  width: 100vw;
+  height: 100vh;
+
+  position: fixed;
+
+  top: 0;
+
+  background-color: rgba(50,50,50, 0.5);
+
+}
+
+#add-project-modal {
+
+  width: 15rem;
+  height: 7rem;
+
+  padding: 0.5rem;
+
+  position: fixed;
+  top: 30vh;
+  left: calc(50vw - 7.5rem);
+
+  box-shadow: lightgrey 2px 2px 2px 2px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  border-style: solid;
+  border-radius: 0.5rem;
+
+  background-color: white;
+
+}
+
+#new-project-form {
+
+  display: grid;
+
+
+}
+
+#form-header {
+
+  margin-bottom: 1rem;
+
+  font-size: 1.5rem;
+
+}
+
+#close-project-modal {
+
+  width: 1.5rem;
+  height: 1.5rem;
+
+  position: absolute;
+
+  right: 1rem;
+  top: 1rem;
+
+  border-radius: 50%;
+
+  background-color: rgb(255, 144, 144);
+
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+
+  font-size: 1.5rem;
+
+}
+
+#close-project-modal > p {
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0.13rem;
+}
