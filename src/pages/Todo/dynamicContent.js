@@ -1,4 +1,4 @@
-import { StoreTodoId, ToggleTaskCompletion } from './data.js';
+import { OpenDetailsPage, ToggleTaskCompletion } from './data.js';
 
 // Handles construction of the UI elements for the full list of tasks in a project
 const BuildTodoList = (todoItems) => {
@@ -24,8 +24,7 @@ const BuildTodoItem = (id, data) => {
 
     // Add link to the details for a specific task to each item
     item.addEventListener("click", () => {
-        StoreTodoId(id);
-        //PageLoader("detailed");
+        OpenDetailsPage(id);
     });
 
     // Section for name and due-date, used for controlling layout in css

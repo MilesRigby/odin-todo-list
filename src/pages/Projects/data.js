@@ -16,7 +16,7 @@ const GetProjectData = () => {
 
 }
 
-// Stores the id of a clicked project, and open that project's todo list
+// Stores the id of a clicked project, and opens that project's todo list
 const OpenTodoPage = (id) => {
     PageDataTransferHandler.todo.Store(id);
     PageLoader("todo");

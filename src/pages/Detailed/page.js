@@ -1,46 +1,32 @@
-/*
-<div id="details-content-wrapper">
-
-    <p class="det-name">Task #2</p>
-    <p class="det-priority">Priority: Med</p>
-    <p class="det-description">
-        Description: Morbi feugiat malesuada mauris eu luctus. Quisque vehicula sapien nec erat scelerisque fermentum. Suspendisse a neque scelerisque, condimentum urna ac, mattis odio. In vel lectus finibus, lobortis augue non, feugiat tortor. Suspendisse ornare quis ex non vehicula. Quisque quis dolor sed ante elementum fermentum. Mauris eu tellus est.
-    </p>
-    <p class="det-due-date">Date Due: 27-02-2026</p>
-    <div class="det-complete">
-        <p>Completed: </p> 
-        <input type="checkbox">
-    </div>
-
-</div>
-*/
-
+import { GetTaskData } from "./data";
 
 // Constructs the content of the details page, displaying info about a single todo list task.
 // Currently fixed-content, needs to be updated to load data from projectData via data.js.
 const BuildDetailedTodoPage = () => {
+
+    const data = GetTaskData();
 
     const page = document.createElement("div");
     page.id = "details-content-wrapper";
 
     const taskName = document.createElement("p");
     taskName.className = "det-name";
-    taskName.innerText = "Task #2";
+    taskName.innerText = data.name;
     page.appendChild(taskName);
 
     const taskPriority = document.createElement("p");
     taskPriority.className = "det-priority";
-    taskPriority.innerText = "Priority: Med";
+    taskPriority.innerText = "Priority: " + data.priority;
     page.appendChild(taskPriority);
 
     const taskDesc = document.createElement("p");
     taskDesc.className = "det-description";
-    taskDesc.innerText = "Description: Morbi feugiat malesuada mauris eu luctus. Quisque vehicula sapien nec erat scelerisque fermentum. Suspendisse a neque scelerisque, condimentum urna ac, mattis odio. In vel lectus finibus, lobortis augue non, feugiat tortor. Suspendisse ornare quis ex non vehicula. Quisque quis dolor sed ante elementum fermentum. Mauris eu tellus est.";
+    taskDesc.innerText = "Description: " + data.description;
     page.appendChild(taskDesc);
 
     const dueDate = document.createElement("p");
     dueDate.className = "det-due-date";
-    dueDate.innerText = "Date Due: 27-02-2026";
+    dueDate.innerText = "Date Due: " + data.complete;
     page.appendChild(dueDate);
 
     // Container for text and checkbox input elements
@@ -54,6 +40,7 @@ const BuildDetailedTodoPage = () => {
 
     const checkComplete = document.createElement("input");
     checkComplete.type = "checkbox";
+    if (data.complete) { checkComplete.checked = "true"; }
     taskComplete.appendChild(checkComplete);
 
     return page;
