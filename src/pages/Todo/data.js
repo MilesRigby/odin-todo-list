@@ -8,6 +8,7 @@ This is the only file in its folder that should access files outside the folder.
 import DataAccess from "../../data/ProjectData";
 import PageDataTransferHandler from "../../data/PageDataTransferHandler";
 import PageLoader from "../PageLoader";
+import OpenAddTaskModal from "../../data/user-input/taskModal";
 
 // Helper function to retrieve the projectId for the page
 const GetProjectId = () => {return PageDataTransferHandler.todo.Retrieve().projectId}
@@ -28,5 +29,9 @@ const OpenDetailsPage = (id) => {
     PageLoader("detailed");
 }
 
+const CreateNewTask = () => {
+    OpenAddTaskModal(GetProjectId());
+}
+
 // Exports to be used by the page's other files - not to be called from outside data.js' parent folder
-export { GetTodoData, ToggleTaskCompletion, OpenDetailsPage }
+export { GetTodoData, ToggleTaskCompletion, OpenDetailsPage, CreateNewTask }

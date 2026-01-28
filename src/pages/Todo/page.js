@@ -6,7 +6,7 @@ This is the only file in its folder that should be accessed from outside it.
 */
 
 import BuildTodoList from "./dynamicContent";
-import { GetTodoData } from "./data";
+import { GetTodoData, CreateNewTask } from "./data";
 
 // Call on functions to produce the main content for a todo list, including title and "add" button
 const BuildTodoPage = () => {
@@ -27,6 +27,7 @@ const BuildTodoPage = () => {
 
     const addTodoItemButton = document.createElement("button");
     addTodoItemButton.id = "add-todo-item";
+    addTodoItemButton.addEventListener("click", () => { CreateNewTask(); })
     pageContent.appendChild(addTodoItemButton);
 
     const buttonText = document.createElement("p");

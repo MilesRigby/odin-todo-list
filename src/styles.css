@@ -423,3 +423,89 @@ Styles for the modal for creating new projects
   bottom: -0.25rem;
   left: 0.13rem;
 }
+
+/*
+
+Styles for the new task creation modal
+
+*/
+
+#add-task-modal {
+
+  --width: max(25rem, content);
+  --height: max(15rem, content);
+
+  width: var(--width);
+  height: var(--height);
+
+  padding: 0.5rem;
+
+  position: fixed;
+  top: 25vh;
+  left: 50vw;
+  transform: translateX(-50%);
+
+  box-shadow: lightgrey 2px 2px 2px 2px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  border-style: solid;
+  border-radius: 0.5rem;
+
+  background-color: white;
+
+}
+
+#new-task-form {
+
+  display: flex;
+  flex-direction: column;
+
+  row-gap: 0.5rem;
+
+}
+
+#form-fields {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+
+  row-gap: 0.5rem;
+
+  align-items: center;
+}
+
+#form-error-msg {
+  color: red;
+}
+
+#close-task-modal {
+
+  width: 1.5rem;
+  height: 1.5rem;
+
+  position: absolute;
+
+  right: 1rem;
+  top: 1rem;
+
+  border-radius: 50%;
+
+  background-color: rgb(255, 144, 144);
+
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+
+  font-size: 1.5rem;
+
+}
+
+#close-task-modal > p {
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0.13rem;
+}
