@@ -1,0 +1,69 @@
+1. Add rule for what to display on project and task items when there is no due date restriction.
+2. Add ability to delete tasks and projects.
+3. Add save/load system.
+
+
+
+
+
+Idea for future projects: HTML object system.
+Currently creating elements via document.createElement("element") and then manually modifying properties/adding to DOM.
+This could be made much easier and closer to HTML syntax by making use of js objects and recursion.
+
+/*
+
+Syntax:
+
+const blueprint = {
+
+    "element": {
+        attributes: {
+            "attribute1": "attribute1Value",
+            "attribute2": "attribute2Value",
+            "attribute3": "attribute3Value",
+        }
+        children: [
+            {...},
+            {...},
+            {...}
+        ]
+    }
+
+}
+
+Where children {...} share the same syntax, until an element with no children is reached
+
+Recursive function to construct content from objects (UNTESTED):
+
+*/
+
+// Constructs DOM objects from javascript objects of the above format
+recursiveObjectToHtml(object) {
+
+    // Retrieve element name ("p", "div", "input", etc)
+    const elementName = Object.keys(object)[0];
+
+    // Create element requested
+    const element = document.createElement(elementName);
+
+    // Retrieve list of attributes to assign
+    const attributes = object[elementName].attributes;
+
+    // Assign all provided attributes and their values, e.g. element.id, element.className, element.innerText, etc
+    for (const [attribute, assignment] of Object.entries(attributes)) {
+        element[attribute] = assignment;
+    }
+
+    // Retrieve children elements
+    const children = object[elementName].children;
+
+    // Create all required children elements using recursive calls and append them to the element
+    for (let i=0; i<children.length; i++) {
+        const child = recursiveObjectToHtml(children[i]);
+        element.appendChild(child);
+    }
+
+    // Return constructed element tree for use in the DOM
+    return element;
+
+}
