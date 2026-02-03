@@ -22,8 +22,14 @@ const pages = {
 
 }
 
+// Handle logic associated with loading pages via website navigation
+const PageLoader = (pageName) => {
+    RegisterUserHistory(pageName);
+    LoadPage(pageName);
+}
+
 // search pages for pageName and call its corresponding function
-const PageLoader = (pageName) => { 
+const LoadPage = (pageName) => { 
 
     // Load page content
     const pageContent = pages[pageName](); 
@@ -33,6 +39,18 @@ const PageLoader = (pageName) => {
     pageContentArea.appendChild(pageContent);
 
 }
+
+// Function to record when the user loads a page, using hisotry.pushState to allow browser
+// navigation in this single page application
+const RegisterUserHistory = (page) => {
+    history.pushState({ page }, '', window.location.pathname);
+}
+
+// Allows use of the browser history navigation buttons
+window.addEventListener('popstate', (event) => {
+    const pageName = event.state.page;
+    LoadPage(pageName);
+});
 
 // Must be used to change pages
 export default PageLoader;
