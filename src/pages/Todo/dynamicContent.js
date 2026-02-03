@@ -39,7 +39,7 @@ const BuildTodoItem = (id, data) => {
 
     const dueDate = document.createElement("p");
     dueDate.className = "todo-item-due-date";
-    dueDate.innerText = data.dueDate;
+    dueDate.innerText = data.dueDate ? data.dueDate : "";
     mainInfo.appendChild(dueDate);
 
     const taskCompleteCheckbox = document.createElement("input");

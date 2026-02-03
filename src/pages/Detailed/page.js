@@ -21,12 +21,12 @@ const BuildDetailedTodoPage = () => {
 
     const taskDesc = document.createElement("p");
     taskDesc.className = "det-description";
-    taskDesc.innerText = "Description: " + data.description;
+    taskDesc.innerText = data.description ? "Description: " + data.description : "";
     page.appendChild(taskDesc);
 
     const dueDate = document.createElement("p");
     dueDate.className = "det-due-date";
-    dueDate.innerText = "Date Due: " + data.complete;
+    dueDate.innerText = "Date Due: " + (data.dueDate ? data.dueDate : "No deadline");
     page.appendChild(dueDate);
 
     // Container for text and checkbox input elements

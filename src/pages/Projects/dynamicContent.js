@@ -50,7 +50,7 @@ const BuildProjectCard = (id, data) => {
 
     const nextStepDate = document.createElement("p");
     nextStepDate.className = "project-earliest-date";
-    nextStepDate.innerText = "Earliest due: " + data.earliestDueDate;
+    nextStepDate.innerText = "Earliest due: " + data.earliestDueDate ? data.earliestDueDate : "No deadlines";
     card.appendChild(nextStepDate);
 
     return card;
