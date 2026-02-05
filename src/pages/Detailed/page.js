@@ -1,4 +1,4 @@
-import { GetTaskData } from "./data";
+import { GetTaskData, ToggleTaskCompletion } from "./data";
 
 // Constructs the content of the details page, displaying info about a single todo list task.
 // Currently fixed-content, needs to be updated to load data from projectData via data.js.
@@ -41,6 +41,10 @@ const BuildDetailedTodoPage = () => {
     const checkComplete = document.createElement("input");
     checkComplete.type = "checkbox";
     if (data.complete) { checkComplete.checked = "true"; }
+    checkComplete.addEventListener("click", (event) => {
+        event.stopPropagation();
+        ToggleTaskCompletion(event.target.checked);
+    })
     taskComplete.appendChild(checkComplete);
 
     return page;
