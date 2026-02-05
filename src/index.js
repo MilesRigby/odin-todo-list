@@ -6,5 +6,8 @@ import "./navigation/NavHeaderSetup.js"
 
 // Use the page loader to load the projects page on start-up
 import PageLoader from "./pages/PageLoader.js";
+import { InitialiseProjectData } from "./data/ProjectData.js";
 
+
+InitialiseProjectData();
 PageLoader("projects");
