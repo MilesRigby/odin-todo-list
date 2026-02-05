@@ -5,6 +5,7 @@ Entries are stored with unique IDs.
 
 */
 
+import PageLoader from "../pages/PageLoader";
 import { GetEarlierDate } from "../utils/date";
 
 // The permanent data for the site, containing project names todo lists for each project
@@ -140,6 +141,14 @@ const CreateNewTodo = (projectId, name, dueDate, priority, description) => {
 
 }
 
+const DeleteProject = (projectId) => {
+    delete projectData[projectId];
+}
+
+const DeleteTask = (projectId, taskId) => {
+    delete projectData[projectId].todoItems[taskId];
+}
+
 // Returns the data needed for the projects page - name, number of todo tasks, 
 // and the date of the earliest due incomplete task for each project
 const GetProjectData = () => {
@@ -181,6 +190,7 @@ const GetTodoData = (id) => {
     }
 }
 
+// Get data on a single task for the details page
 const GetTaskData = (projectId, taskId) => {
     return projectData[projectId].todoItems[taskId];
 }
@@ -207,7 +217,9 @@ const DataAccess = {
     GetProjectData: GetProjectData,
     GetTodoData: GetTodoData,
     UpdateTaskData: UpdateTaskData,
-    GetTaskData: GetTaskData
+    GetTaskData: GetTaskData,
+    DeleteProject: DeleteProject,
+    DeleteTask: DeleteTask
 }
 
 export default DataAccess;

@@ -40,7 +40,7 @@ const LoadPage = (pageName) => {
 
 }
 
-// Function to record when the user loads a page, using hisotry.pushState to allow browser
+// Function to record when the user loads a page, using history.pushState to allow browser
 // navigation in this single page application
 const RegisterUserHistory = (page) => {
     history.pushState({ page }, '', window.location.pathname);
@@ -48,6 +48,7 @@ const RegisterUserHistory = (page) => {
 
 // Allows use of the browser history navigation buttons
 window.addEventListener('popstate', (event) => {
+    if (!event.state) { return; }
     const pageName = event.state.page;
     LoadPage(pageName);
 });

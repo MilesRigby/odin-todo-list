@@ -6,7 +6,7 @@ Builds the dynamic content (the list of projects) for the main projects page
 
 
 // Interfaces with sibling file data.js to retrieve data for loading the page 
-import { OpenTodoPage } from './data';
+import { OpenTodoPage, DeleteProject } from './data';
 
 // Builds the list of projects using their data for the projects page
 const BuildProjectsList = (projectsData) => {
@@ -52,6 +52,16 @@ const BuildProjectCard = (id, data) => {
     nextStepDate.className = "project-earliest-date";
     nextStepDate.innerText = "Earliest due: " + data.earliestDueDate ? data.earliestDueDate : "No deadlines";
     card.appendChild(nextStepDate);
+
+    // Allows user to delete projects, prompting them to confirm so they don't accidentally delete data
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "delete-button";
+    deleteButton.innerText = "X";
+    deleteButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        DeleteProject(id);
+    });
+    card.appendChild(deleteButton);
 
     return card;
 

@@ -112,6 +112,8 @@ Styling for the projects list page.
 
 .project-card {
 
+  position: relative;
+
   margin: 2rem;
   padding: 1rem;
 
@@ -178,6 +180,8 @@ Styling for the todo list pages.
 
   padding: 0.5rem;
   padding-left: 2rem;
+
+  position: relative;
 
   border-bottom-style: solid;
   border-width: 1px;
@@ -505,7 +509,93 @@ Styles for the new task creation modal
 }
 
 #close-task-modal > p {
+
   position: absolute;
   bottom: -0.25rem;
   left: 0.13rem;
+
+}
+
+/* 
+
+Styles for the delete buttons on projects and tasks 
+
+*/
+
+.delete-button {
+
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+
+  width: 1rem;
+  height: 1rem;
+
+  border-radius: 50%;
+
+  background-color: rgb(255, 144, 144);
+
+  font-size: 0.7rem;
+
+}
+
+/*
+
+styles for the confirmation window - used to confirm permanent changes such as deletion of project data 
+
+*/
+
+#confirmation-background {
+
+  width: 100vw;
+  height: 100vh;
+
+  position: fixed;
+
+  top: 0;
+
+  background-color: rgba(50,50,50, 0.2);
+
+}
+
+#confirmation-modal {
+
+  width: 15rem;
+  height: 6rem;
+
+  padding: 0.5rem;
+
+  position: fixed;
+  top: 30vh;
+  left: calc(50vw - 7.5rem);
+
+  box-shadow: lightgrey 2px 2px 2px 2px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 1fr;
+
+  align-items: center;
+  justify-content: center;
+
+  border-style: solid;
+  border-radius: 0.5rem;
+
+  background-color: white;
+
+}
+
+#confirmation-text {
+
+  grid-column: 1 / 3;
+
+}
+
+.confirmation-button {
+
+  width: 4rem;
+  height: 1.5rem;
+
+  justify-self: center;
+
 }

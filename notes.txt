@@ -1,6 +1,5 @@
-1. Add rule for what to display on project and task items when there is no due date restriction.
-2. Add ability to delete tasks and projects.
-3. Add save/load system.
+1. Fix issue: checkboxes on details pages don't change task data
+2. Add save/load system.
 
 
 

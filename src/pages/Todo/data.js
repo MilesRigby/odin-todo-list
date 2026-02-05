@@ -9,6 +9,7 @@ import DataAccess from "../../data/ProjectData";
 import PageDataTransferHandler from "../../data/PageDataTransferHandler";
 import PageLoader from "../PageLoader";
 import OpenAddTaskModal from "../../data/user-input/taskModal";
+import OpenConfirmationModal from "../../data/user-input/confirmationPrompt";
 
 // Helper function to retrieve the projectId for the page
 const GetProjectId = () => {return PageDataTransferHandler.todo.Retrieve().projectId}
@@ -33,5 +34,12 @@ const CreateNewTask = () => {
     OpenAddTaskModal(GetProjectId());
 }
 
+const DeleteTask = (id) => {
+    OpenConfirmationModal("delete this task", () => {
+        DataAccess.DeleteTask(GetProjectId(), id);
+        PageLoader("todo");
+    })
+}
+
 // Exports to be used by the page's other files - not to be called from outside data.js' parent folder
-export { GetTodoData, ToggleTaskCompletion, OpenDetailsPage, CreateNewTask }
+export { GetTodoData, ToggleTaskCompletion, OpenDetailsPage, CreateNewTask, DeleteTask }

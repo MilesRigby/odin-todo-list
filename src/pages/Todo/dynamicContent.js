@@ -1,4 +1,4 @@
-import { OpenDetailsPage, ToggleTaskCompletion } from './data.js';
+import { OpenDetailsPage, ToggleTaskCompletion, DeleteTask } from './data.js';
 
 // Handles construction of the UI elements for the full list of tasks in a project
 const BuildTodoList = (todoItems) => {
@@ -55,6 +55,16 @@ const BuildTodoItem = (id, data) => {
     })
     
     item.appendChild(taskCompleteCheckbox);
+
+    // Allows user to delete tasks, prompting them to confirm so they don't accidentally delete data
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "delete-button";
+    deleteButton.innerText = "X";
+    deleteButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        DeleteTask(id);
+    });
+    item.appendChild(deleteButton);
     
     return item;
 
