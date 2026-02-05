@@ -123,9 +123,8 @@ const InitialiseProjectData = () => {
 
     const data = LoadProjectData();
 
-    if (data != null && data != {}) {
+    if (data != null && Object.keys(data).length != 0) {
         Object.assign(projectData, structuredClone(data));
-        console.log(projectData);
     }
 
     else {
