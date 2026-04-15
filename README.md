@@ -21,3 +21,5 @@ Pages:
 Storage:
  - Uses JSON strings stored in local data to persist user data between site visits.
  - Creates an initial project with a single task if there are no user projects already stored.
+
+Useable at github pages, link: https://milesrigby.github.io/odin-todo-list/
